@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.turtleteam.myapp.ui.fragments.register.RegisterFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.auth.registerfragment.RegisterFragment"
         android:label="@string/register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.turtleteam.myapp.ui.fragments.auth.AuthFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.auth.loginfragment.AuthFragment"
         android:label="@string/auth"
         tools:layout="@layout/fragment_auth" >
         <action
