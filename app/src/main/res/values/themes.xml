@@ -8,4 +8,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
     </style>
+
+    <style name="navbar">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="itemIconTint">@drawable/selector</item>
+        <item name="itemTextColor">@drawable/selector</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
 </resources>
