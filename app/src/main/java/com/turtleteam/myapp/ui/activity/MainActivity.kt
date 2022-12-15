@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationMenu.setupWithNavController(navController)
-        
+
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
