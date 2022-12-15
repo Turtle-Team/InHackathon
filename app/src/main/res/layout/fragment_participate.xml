@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@color/gray"
     tools:context=".ui.fragments.participate.ParticipateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="participate" />
+
+    <include
+        android:id="@+id/stateView"
+        layout="@layout/view_request_state"/>
 
 </FrameLayout>

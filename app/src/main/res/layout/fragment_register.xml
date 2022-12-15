@@ -149,11 +149,11 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/registerButton"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
+                android:id="@+id/authButton"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/edit_text_corners"
                 android:backgroundTint="@color/gray"
                 android:fontFamily="@font/qanelas"
