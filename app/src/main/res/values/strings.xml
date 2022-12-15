@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">myApp</string>
+    <string name="login_title">Логин</string>
+    <string name="register_title">Регистрация</string>
+    <string name="to_register">Зарегистрироваться</string>
+    <string name="fio_title">ФИО</string>
+    <string name="my_post">Должность</string>
+    <string name="organization_title">Организация</string>
 </resources>
