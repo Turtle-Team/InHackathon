@@ -24,6 +24,12 @@ class AuthFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        // Проверка на авторизацию
+        if (0 != 0){
+            findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+        }
+
         binding.authButton.setOnClickListener {
             findNavController().navigate(R.id.action_authFragment_to_homeFragment)
         }

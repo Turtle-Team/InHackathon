@@ -46,10 +46,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationMenu.setupWithNavController(navController)
-
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onSupportNavigateUp(): Boolean {
