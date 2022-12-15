@@ -14,4 +14,5 @@
     <string name="password">Пароль</string>
     <string name="participate">Участвую</string>
     <string name="events">Мероприятия</string>
+    <string name="repeat_title">Повторить</string>
 </resources>
