@@ -38,8 +38,9 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
             viewModel.register(AuthRequestBody(
                 binding.fioEditText.text.toString(),
                 binding.postEditText.text.toString(),
-                binding.organizationEditText.text.toString(),
-                binding.statusPopupButton.text.toString(),
+                binding.organizationEditText.toString(),
+//                binding.statusPopupButton.text.toString(),
+                "status",
                 binding.emailEditText.text.toString(),
                 binding.passwordEditText.text.toString()
             ))

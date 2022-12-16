@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/exportFile"
+        android:id="@+id/organizer"
         android:title="Организатор"/>
 
     <item
-        android:id="@+id/copyFile"
+        android:id="@+id/speaker"
         android:title="Спикер"/>
     <item
-        android:id="@+id/deleteFile"
+        android:id="@+id/participant"
         android:title="Участник"/>
+
+    <item
+        android:id="@+id/deleteFile"
+        android:title="Гирин"/>
 </menu>
