@@ -37,4 +37,9 @@
         android:name="com.turtleteam.myapp.ui.fragments.participate.ParticipateFragment"
         android:label="@string/participate"
         tools:layout="@layout/fragment_participate" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.setting.SettingFragment"
+        android:label="Настройки"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

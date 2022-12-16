@@ -3,15 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.home.HomeFragment">
+    tools:context=".ui.fragments.setting.SettingFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
         android:layout_height="match_parent"
-        android:text="Мероприятия" />
+        android:text="@string/hello_blank_fragment" />
 
-    <include
-        android:id="@+id/stateView"
-        layout="@layout/view_request_state" />
 </FrameLayout>

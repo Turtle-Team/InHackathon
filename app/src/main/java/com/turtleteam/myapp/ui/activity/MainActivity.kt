@@ -21,20 +21,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//
+
         val bottomNavigationMenu = findViewById<BottomNavigationView>(R.id.nav_bar)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
-//
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.authFragment,
-//                R.id.registerButton,
-//                R.id.participateFragment
-//            )
-//        )
-//
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.authFragment,
+                R.id.registerButton,
+                R.id.participateFragment,
+                R.id.settingFragment
+            )
+        )
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.authFragment -> bottomNavigationMenu.visibility = View.INVISIBLE
@@ -42,9 +43,16 @@ class MainActivity : AppCompatActivity() {
                 else -> bottomNavigationMenu.visibility = View.VISIBLE
             }
         }
-//
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//
-//        bottomNavigationMenu.setupWithNavController(navController)
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        bottomNavigationMenu.setupWithNavController(navController)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

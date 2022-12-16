@@ -9,6 +9,8 @@
         android:id="@+id/participateFragment"
         android:icon="@drawable/ic_participate"
         android:title="@string/participate" />
-
-
+    <item
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/settings"/>
 </menu>
