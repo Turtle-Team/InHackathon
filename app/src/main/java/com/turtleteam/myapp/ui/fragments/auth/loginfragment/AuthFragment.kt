@@ -35,7 +35,7 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
                 loadingview.visibility = View.VISIBLE
             }
 
-            viewModel.login(binding.fioEditText.toString(), binding.passwordEditText.text.toString())
+            viewModel.login(binding.fioEditText.text.toString(), binding.passwordEditText.text.toString())
         }
 
         binding.registerButton.setOnClickListener {
