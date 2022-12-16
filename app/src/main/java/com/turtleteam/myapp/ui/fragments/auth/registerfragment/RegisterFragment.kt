@@ -4,16 +4,80 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import com.turtleteam.myapp.R
+import com.turtleteam.myapp.data.model.users.AuthRequestBody
+import com.turtleteam.myapp.data.model.users.UserId
+import com.turtleteam.myapp.data.wrapper.Result
 import com.turtleteam.myapp.databinding.FragmentRegisterBinding
 import com.turtleteam.myapp.ui.fragments.auth.base.BaseAuthFragment
+import com.turtleteam.myapp.utils.ViewAnimations
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
+
+    private val viewModel by viewModels<RegisterViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.authButton.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+            ViewAnimations.blackout(false, binding.cardAuth)
+            binding.apply {
+                fioEditText.isFocusable = false
+                postEditText.isFocusable = false
+                organizationEditText.isFocusable = false
+                statusPopupButton.isClickable = false
+                emailEditText.isFocusable = false
+                passwordEditText.isFocusable = false
+                authButton.isFocusable = false
+                loadingview.visibility = View.VISIBLE
+            }
+            viewModel.register(AuthRequestBody(
+                binding.fioEditText.text.toString(),
+                binding.postEditText.text.toString(),
+                binding.organizationEditText.text.toString(),
+                binding.statusPopupButton.text.toString(),
+                binding.emailEditText.text.toString(),
+                binding.passwordEditText.text.toString()
+            ))
+        }
+        viewModel.userId.observe(viewLifecycleOwner) {
+            ViewAnimations.blackout(true, binding.cardAuth)
+            binding.apply {
+                fioEditText.isFocusableInTouchMode = true
+                postEditText.isFocusableInTouchMode = true
+                organizationEditText.isFocusableInTouchMode = true
+                statusPopupButton.isClickable = true
+                emailEditText.isFocusableInTouchMode = true
+                passwordEditText.isFocusableInTouchMode = true
+                authButton.isClickable = true
+                loadingview.visibility = View.GONE
+            }
+            handleResult(it)
+        }
+    }
+
+    private fun handleResult(result: com.turtleteam.myapp.data.wrapper.Result<UserId>) {
+        when (result) {
+            is Result.Success -> {
+//                context?.let { UserPreferences(it).getUserId(result.value.id) }
+                Toast.makeText(context, result.value.token, Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+            }
+            is Result.ConnectionError -> {
+                Toast.makeText(context, "Нет удалось подключиться к сети", Toast.LENGTH_LONG).show()
+            }
+            is Result.Loading -> {
+                binding.loadingview.visibility = View.VISIBLE
+            }
+            is Result.Error,
+            is Result.NotFoundError,
+            -> {
+                Toast.makeText(context, result.toString(), Toast.LENGTH_LONG).show()
+            }
         }
     }
 

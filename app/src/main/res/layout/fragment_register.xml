@@ -54,7 +54,6 @@
             android:ems="10"
             android:fontFamily="@font/qanelas"
             android:hint="@string/post"
-            android:inputType="textPassword"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textColor="@color/white"
@@ -70,7 +69,6 @@
             android:ems="10"
             android:fontFamily="@font/qanelas"
             android:hint="@string/organization"
-            android:inputType="textPassword"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textColor="@color/white"
@@ -132,6 +130,13 @@
             android:text="@string/auth_btn" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loadingview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
 </FrameLayout>
 
