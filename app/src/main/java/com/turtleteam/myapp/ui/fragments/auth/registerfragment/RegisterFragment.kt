@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.gson.Gson
 import com.turtleteam.myapp.R
 import com.turtleteam.myapp.data.model.users.AuthRequestBody
 import com.turtleteam.myapp.data.model.users.UserId
+import com.turtleteam.myapp.data.preferences.UserPreferences
 import com.turtleteam.myapp.data.wrapper.Result
 import com.turtleteam.myapp.databinding.FragmentRegisterBinding
 import com.turtleteam.myapp.ui.fragments.auth.base.BaseAuthFragment
@@ -64,7 +64,7 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
     private fun handleResult(result: com.turtleteam.myapp.data.wrapper.Result<UserId>) {
         when (result) {
             is Result.Success -> {
-//                context?.let { UserPreferences(it).getUserId(result.value.id) }
+                context?.let { UserPreferences(it).getUserId(result.value.token) }
                 Toast.makeText(context, result.value.token, Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
             }
@@ -77,7 +77,7 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
             is Result.Error,
             is Result.NotFoundError,
             -> {
-                Toast.makeText(context, result.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Не удалось зарегистрироваться", Toast.LENGTH_LONG).show()
             }
         }
     }

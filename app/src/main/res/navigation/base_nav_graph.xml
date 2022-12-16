@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/base_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_nav_graph"
+    app:startDestination="@id/eventsFragment">
+
+
+    <fragment
+        android:id="@+id/participateFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.home.participate.ParticipateFragment"
+        android:label="fragment_participate"
+        tools:layout="@layout/fragment_participate" />
+
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.home.events.EventsFragment"
+        android:label="EventsFragment"
+        tools:layout="@layout/fragment_events"/>
+
 
 </navigation>

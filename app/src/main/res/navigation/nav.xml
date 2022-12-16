@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/authFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment2"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -20,21 +22,33 @@
         android:label="@string/auth"
         tools:layout="@layout/fragment_auth" >
         <action
-            android:id="@+id/action_authFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
             android:id="@+id/action_authFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_homeFragment"
+            app:destination="@id/homeFragment2"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.turtleteam.myapp.ui.fragments.home.HomeFragment"
-        android:label="@string/events"
-        tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/participateFragment"
-        android:name="com.turtleteam.myapp.ui.fragments.participate.ParticipateFragment"
-        android:label="@string/participate"
-        tools:layout="@layout/fragment_participate" />
+        android:id="@+id/splashFragment"
+        android:name="com.turtleteam.myapp.ui.fragments.auth.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment2"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.turtleteam.myapp.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.turtleteam.myapp.R
 import com.turtleteam.myapp.data.model.users.UserId
+import com.turtleteam.myapp.data.preferences.UserPreferences
 import com.turtleteam.myapp.data.wrapper.Result
 import com.turtleteam.myapp.databinding.FragmentAuthBinding
 import com.turtleteam.myapp.ui.fragments.auth.base.BaseAuthFragment
@@ -55,7 +56,7 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
     private fun handleResult(result: com.turtleteam.myapp.data.wrapper.Result<UserId>) {
         when (result) {
             is Result.Success -> {
-//                context?.let { UserPreferences(it).getUserId(result.value.id) }
+                context?.let { UserPreferences(it).getUserId(result.value.token) }
                 Toast.makeText(context, result.value.token, Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_authFragment_to_homeFragment)
             }
@@ -66,7 +67,7 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
             is Result.Error,
             is Result.NotFoundError,
             -> {
-                Toast.makeText(context, result.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Не удалось войти в аккаунт", Toast.LENGTH_LONG).show()
             }
         }
     }

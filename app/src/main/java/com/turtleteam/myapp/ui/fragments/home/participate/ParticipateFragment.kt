@@ -1,4 +1,4 @@
-package com.turtleteam.myapp.ui.fragments.participate
+package com.turtleteam.myapp.ui.fragments.home.participate
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -2,13 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/eventsf"
         android:icon="@drawable/ic_events"
         android:title="@string/events" />
     <item
-        android:id="@+id/participateFragment"
+        android:id="@+id/particf"
         android:icon="@drawable/ic_participate"
         android:title="@string/participate" />
-
-
 </menu>
