@@ -8,6 +8,26 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.auth.loginfragment.AuthFragment">
 
+
+    <LinearLayout
+        android:id="@+id/cardAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/auth_drawable"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/qanelas"
+            android:text="@string/auth"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardAuth"
         android:layout_width="300dp"
@@ -32,11 +52,46 @@
                 style="@style/textView"
                 android:textSize="30sp" />
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_corners"
+            android:ems="10"
+            android:fontFamily="@font/qanelas"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_corners"
+            android:ems="10"
+            android:fontFamily="@font/qanelas"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
                 <EditText
                     android:id="@+id/fioEditText"
@@ -66,8 +121,29 @@
                     android:paddingEnd="20dp"
                     style="@style/editText"/>
 
+
             </LinearLayout>
 
+        <Button
+            android:id="@+id/authButton"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_corners"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/qanelas"
+            android:text="@string/auth_btn" />
+
+        <TextView
+            android:id="@+id/registerButton"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/qanelas"
+            android:gravity="center"
+            android:text="@string/register"
+            android:textColor="@color/purple_500" />
             <Button
                 android:id="@+id/authButton"
                 android:layout_width="250dp"
@@ -88,8 +164,14 @@
                 android:fontFamily="@font/qanelas"
                 android:text="@string/register" />
 
-        </LinearLayout>
+    </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/loadingview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
         <ProgressBar
             android:id="@+id/loadingview"
             android:visibility="invisible"
