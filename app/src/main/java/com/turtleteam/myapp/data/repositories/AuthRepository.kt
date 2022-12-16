@@ -23,6 +23,6 @@ class AuthRepository @Inject constructor(
         email: String,
         password: String,
     ): Result<UserId> = NetworkResultWrapper.wrapWithResult {
-        apiService.login(email, password)
+        apiService.login(email = email, password = password)
     }
 }

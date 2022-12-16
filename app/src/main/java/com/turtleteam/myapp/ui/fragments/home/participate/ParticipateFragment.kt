@@ -16,7 +16,7 @@ class ParticipateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentParticipateBinding.inflate(layoutInflater, container, false)
+        binding = FragmentParticipateBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

@@ -16,6 +16,8 @@ import com.turtleteam.myapp.ui.fragments.auth.base.BaseAuthFragment
 import com.turtleteam.myapp.utils.ViewAnimations
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_auth.*
+import kotlinx.android.synthetic.main.fragment_auth.passwordEditText
+import kotlinx.android.synthetic.main.fragment_register.*
 
 @AndroidEntryPoint
 class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
@@ -28,12 +30,12 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
             binding.apply {
                 authButton.isClickable = false
                 registerButton.isClickable = false
+                fioEditText.isFocusable = false
                 passwordEditText.isFocusable = false
-                emailEditText.isFocusable = false
                 loadingview.visibility = View.VISIBLE
             }
 
-            viewModel.login(emailEditText.text.toString(), passwordEditText.text.toString())
+            viewModel.login(binding.fioEditText.toString(), binding.passwordEditText.text.toString())
         }
 
         binding.registerButton.setOnClickListener {
@@ -46,8 +48,8 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
             binding.apply {
                 authButton.isClickable = true
                 registerButton.isClickable = true
+                fioEditText.isFocusableInTouchMode = true
                 passwordEditText.isFocusableInTouchMode = true
-                emailEditText.isFocusableInTouchMode = true
                 loadingview.visibility = View.GONE
             }
         }
@@ -56,18 +58,24 @@ class AuthFragment : BaseAuthFragment<FragmentAuthBinding>() {
     private fun handleResult(result: com.turtleteam.myapp.data.wrapper.Result<UserId>) {
         when (result) {
             is Result.Success -> {
-                context?.let { UserPreferences(it).getUserId(result.value.token) }
-                Toast.makeText(context, result.value.token, Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+                if (result.value.token!=null) {
+                    context?.let { UserPreferences(it).getUserId(result.value.token) }
+                    Toast.makeText(context, result.value.token, Toast.LENGTH_LONG).show()
+                    findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+                }else{
+                    handleResult(Result.NotFoundError)
+                }
             }
             is Result.Loading -> {
                 binding.loadingview.visibility = View.VISIBLE
             }
             is Result.ConnectionError,
-            is Result.Error,
+            is Result.Error ->{
+                Toast.makeText(context, "Не удалось войти в аккаунт", Toast.LENGTH_LONG).show()
+            }
             is Result.NotFoundError,
             -> {
-                Toast.makeText(context, "Не удалось войти в аккаунт", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Такого аккаунта не существует", Toast.LENGTH_LONG).show()
             }
         }
     }

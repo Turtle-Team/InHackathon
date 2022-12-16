@@ -1,4 +1,4 @@
-package com.turtleteam.myapp.ui.fragments.setting
+package com.turtleteam.myapp.ui.fragments.home.setting
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,7 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSettingBinding.inflate(layoutInflater, container, false)
+        binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import android.widget.PopupMenu
-
 import androidx.navigation.fragment.findNavController
 import com.turtleteam.myapp.R
 import com.turtleteam.myapp.data.model.users.AuthRequestBody
@@ -21,7 +20,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
+
     private val viewModel by viewModels<RegisterViewModel>()
+    private var selectStatus = "СТАТУС"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.authButton.setOnClickListener {
@@ -60,6 +61,10 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
             }
             handleResult(it)
         }
+
+        binding.statusPopupButton.setOnClickListener {
+            showPopup(binding.statusPopupButton)
+        }
     }
 
     private fun handleResult(result: com.turtleteam.myapp.data.wrapper.Result<UserId>) {
@@ -80,17 +85,6 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
             -> {
                 Toast.makeText(context, "Не удалось зарегистрироваться", Toast.LENGTH_LONG).show()
             }
-            
-    private var selectStatus = "СТАТУС"
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.registerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
-
-        }
-
-        binding.statusPopupButton.setOnClickListener {
-            showPopup(binding.statusPopupButton)
         }
     }
 
@@ -108,5 +102,6 @@ class RegisterFragment : BaseAuthFragment<FragmentRegisterBinding>() {
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
-    ): FragmentRegisterBinding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
+    ): FragmentRegisterBinding =
+        FragmentRegisterBinding.inflate(layoutInflater, container, false)
 }

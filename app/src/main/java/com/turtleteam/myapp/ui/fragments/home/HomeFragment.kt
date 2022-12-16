@@ -9,6 +9,7 @@ import com.turtleteam.myapp.R
 import com.turtleteam.myapp.databinding.FragmentHomeBinding
 import com.turtleteam.myapp.ui.fragments.home.events.EventsFragment
 import com.turtleteam.myapp.ui.fragments.home.participate.ParticipateFragment
+import com.turtleteam.myapp.ui.fragments.home.setting.SettingFragment
 
 
 class HomeFragment : Fragment() {
@@ -23,14 +24,20 @@ class HomeFragment : Fragment() {
 
         binding.navBar.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.eventsf -> {
+                R.id.homeFragment -> {
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.homeFragmentContainerView, EventsFragment()).commitNow()
                     true
                 }
-                R.id.particf -> {
+                R.id.participateFragment -> {
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.homeFragmentContainerView, ParticipateFragment()).commitNow()
+                    true
+                }
+                R.id.settingFragment -> {
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.homeFragmentContainerView, SettingFragment())
+                        .commitNow()
                     true
                 }
                 else -> {
